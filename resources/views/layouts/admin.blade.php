@@ -1,3 +1,5 @@
+{{--Toma los parametros del dashboard--}}
+@props(['breadcrumbs' => [] ])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -14,24 +16,32 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <script src="https://kit.fontawesome.com/b09a9f391a.js" crossorigin="anonymous"></script>
+
+        <wireui:scripts />
+
         <!-- Styles -->
         @livewireStyles
+
     </head>
+    <body class="font-sans antialiased bg-gray-50">
 
+        @include('layouts.includes.admin.navigation')
 
-<body class="font-sans antialiased bg-gray-50">
+        @include('layouts.includes.admin.sidebar')
 
-    @include('layouts.includes.admin.navigation')
-    @include('layouts.includes.admin.sidebar')
+        <div class="p-4 sm:ml-64">
+            <!--Añadir Margen superior-->
+            <div class="mt-14 flex items-center justify-between w-full">
+                @include('layouts.includes.admin.breadcrumb')
+            </div>
+            {{ $slot }}
 
-    <div class="p-4 sm:ml-64">
-
-        <div class="mt-14">
-            {{$slot}}
         </div>
-    </div>
         @stack('modals')
 
         @livewireScripts
+
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     </body>
 </html>

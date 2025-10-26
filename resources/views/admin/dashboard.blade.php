@@ -1,5 +1,10 @@
-<x-admin-layout>
-   
-        Hola, Dashboard funcionando
-    
+<x-admin-layout :breadcrumbs="[
+    [
+    'name' => 'Dashboard',
+    'href' => route('admin.dashboard'),
+    ],
+
+    ['name' => 'Profile'],
+]">
+    Funciona 
 </x-admin-layout>
